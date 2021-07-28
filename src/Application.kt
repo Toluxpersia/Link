@@ -37,11 +37,11 @@ fun Application.module(testing: Boolean = false) {
             verifier(jwtService.verifier)
             realm = JWT_REALM
            validate {
-               val userId = it.payload.getClaim(CLAIM_USERID).asString()
+               val userId = it.payload.getClaim(CLAIM_USERID).asInt()
                //val userName = it.payload.getClaim(CLAIM_USERNAME).asString()
 
                val user = mongoDataHandler.finduser(userId) // 4
-              UserIdPrincipalForUser(user?.userId.toString())
+              UserIdPrincipalForUser(user?.userId!!)
                }
         }
     }

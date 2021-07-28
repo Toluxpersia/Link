@@ -69,7 +69,7 @@ val user = mongohandler.adduser(email, userName, hash)
             currentUser?.userId?.let {
               //  call.respondText(jwtService.generateToken(currentUser.userId!!.toString()))
                 if (currentUser.passwordHash == hash) { // 3
-                    call.sessions.set(MySession(it.toString())) // 4
+                    call.sessions.set(MySession(it)) // 4
                     call.respondText(jwtService.generateToken(currentUser.userId!!.toString())) // 5
                 } else {
                     call.respond(
